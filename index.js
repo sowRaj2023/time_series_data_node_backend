@@ -1,10 +1,12 @@
 const express = require("express");
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
+const cors = require("cors");
 const path = require("path");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PATH = path.join(__dirname, "time_series_DB.db");
 const PORT = process.env.PORT || 3050;

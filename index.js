@@ -33,14 +33,14 @@ intializeDBAndServer();
 app.get("/api/time-series-data", async (req, res) => {
     const {period = "daily"} = req.query;   
     let SQL_QUERY = `SELECT strftime("%d-%m-%Y", timestamp) as day, AVG(value) as value from time_series_data
-            GROUP BY strftime("%d-%m-%Y", timestamp);`
+            GROUP BY day;`
 
     if (period === "weekly") {
-        SQL_QUERY = `SELECT strftime("%W-%Y", timestamp) as weekOfYear, AVG(value) as value from time_series_data
+        SQL_QUERY = `SELECT strftime("%d-%m-%Y", timestamp) as day, AVG(value) as value from time_series_data
             GROUP BY strftime("%W-%Y", timestamp);`
     }
     if (period === "monthly") {
-        SQL_QUERY = `SELECT strftime("%m-%Y", timestamp) as monthOfYear, AVG(value) as value from time_series_data
+        SQL_QUERY = `SELECT strftime("%d-%m-%Y", timestamp) as day, AVG(value) as value from time_series_data
             GROUP BY strftime("%m-%Y", timestamp);`
     }
     const dbResponse = await db.all(SQL_QUERY);

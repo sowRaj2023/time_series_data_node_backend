@@ -1,5 +1,7 @@
 # TIME SERIES DATA
 
+base url = `https://time-series-data-node-backend.onrender.com`
+
 ## Endpoint
 
 ```/api/time-series-data```

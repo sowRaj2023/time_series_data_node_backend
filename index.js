@@ -26,7 +26,6 @@ const intializeDBAndServer = async () => {
 
 intializeDBAndServer();
 
-
 app.get("/api/time-series-data", async (req, res) => {
     const {period = "daily"} = req.query;   
     let SQL_QUERY = `SELECT strftime("%d-%m-%Y", timestamp) as day, AVG(value) as value from time_series_data

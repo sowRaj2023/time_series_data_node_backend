@@ -6,7 +6,9 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "*",
+}));
 
 const PATH = path.join(__dirname, "time_series_DB.db");
 const PORT = process.env.PORT || 3050;

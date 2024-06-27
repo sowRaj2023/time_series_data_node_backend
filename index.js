@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const PATH = path.join(__dirname, "time_series_DB.db");
-const PORT = process.env.PORT || 1212;
+const PORT = process.env.PORT || 3050;
 
 let db = null;
 
